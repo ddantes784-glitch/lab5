@@ -1,9 +1,19 @@
-arr = [99, -5, 0, 14, -100, 22, 7]
-n = len(arr)
+arr = [-100, -5, 0, 7, 14, 22, 99]
+target = 14
 
-for i in range(n):
-    for j in range(0, n - i - 1):
-        if arr[j] > arr[j + 1]:
-            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+low = 0
+high = len(arr) - 1
+index = -1
 
-print(f"Отсортированный массив: {arr}")
+while low <= high:
+    mid = (low + high) // 2
+    
+    if arr[mid] == target:
+        index = mid
+        break
+    elif arr[mid] < target:
+        low = mid + 1
+    else:
+        high = mid - 1
+
+print(f"Индекс элемента {target}: {index}")
