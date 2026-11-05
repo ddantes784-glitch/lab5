@@ -1,25 +1,31 @@
-import random
+from random import *
+n = randint(1000, 9999)
+from random import *
+n = randint(1000, 9999)
+# Переводим загаданное число в строку для удобного сравнения
+secret = str(n)
 
-def estimate_pi(num_samples):
-    inside_circle = 0
+print("Компьютер загадал 4-значное число. Попробуйте угадать")
 
-    for _ in range(num_samples):
-        # Генерируем случайную точку (x, y) в квадрате от 0 до 1
-        x = random.uniform(0, 1)
-        y = random.uniform(0, 1)
-
-        # Проверяем, попала ли точка внутрь четверти круга
-        # (используем уравнение окружности x² + y² <= 1)
-        if x**2 + y**2 <= 1:
-            inside_circle += 1
-
-    # Вычисляем приближенное значение pi
-    pi_estimate = 4 * inside_circle / num_samples
-    return pi_estimate
-
-# Количество случайных точек (чем больше, тем точнее результат)
-samples = 1000000
-calculated_pi = estimate_pi(samples)
-
-print(f"Количество точек: {samples}")
-print(f"Вычисленное значение π: {calculated_pi}")
+while True:
+    guess = input("Введите ваш вариант (4 цифры): ").strip()
+    
+    if len(guess) != 4 or not guess.isdigit():
+        print("Пожалуйста, введите 4 цифры.")
+        continue
+        
+    if guess == secret:
+        print(f"Поздравляем! Вы угадали число {secret}!")
+        break
+        
+    bulls = 0
+    cows = 0
+    
+    # Считаем быков и коров
+    for i in range(4):
+        if guess[i] == secret[i]:
+            bulls += 1
+        elif guess[i] in secret:
+            cows += 1
+            
+    print(f"Быки: {bulls}, Коровы: {cows}")
