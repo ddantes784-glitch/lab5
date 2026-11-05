@@ -1,20 +1,15 @@
 n = int(input("Введите число: "))
-original = n
 # ввод переменных
-count = 0
-total = 0
-product = 1
-revers = 0
+original = n
+reversed_num = 0
+temp = n
 # ввод цикла while
-while n > 0:
-    digit = n % 10
-    count += 1
-    total += digit
-    product *= digit
-    revers = revers * 10 + digit
-    n //= 10
-# вывод полученных результатов
-print(f"Количество цифр: {count}")
-print(f"Сумма цифр: {total}")
-print(f"Произведение цифр: {product}")
-print(f"Перевернутое число: {revers}")
+while temp > 0:
+    digit = temp % 10
+    reversed_num = reversed_num * 10 + digit
+    temp //= 10
+# ввод условия if
+if original == reversed_num:
+    print(f"{original} — палиндром")
+else:
+    print(f"{original} — не палиндром")
