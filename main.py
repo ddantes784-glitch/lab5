@@ -1,15 +1,9 @@
-eps = float(input("Введите точность: "))
+arr = [99, -5, 0, 14, -100, 22, 7]
+n = len(arr)
 
-e = 1.0
-f = 1
-i = 1
+for i in range(n):
+    for j in range(0, n - i - 1):
+        if arr[j] > arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
 
-while True:
-    step = 1 / f
-    if step < eps:
-        break
-    e += step
-    i += 1
-    f *= i
-
-print(f"Результат e: {e}")
+print(f"Отсортированный массив: {arr}")
